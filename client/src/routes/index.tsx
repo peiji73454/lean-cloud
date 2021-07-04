@@ -44,7 +44,6 @@ class PrivateRoute extends Component<any,any> {
 
     render() {
         const {path, component }:any = this.props;
-
         if (getToken('accessToken')){                                              //是已经登录的情况
             return <Route path={path} component={component}/>
         } else {                                                  //没有登录的情况，提醒用户登录
