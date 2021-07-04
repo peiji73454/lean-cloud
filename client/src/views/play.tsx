@@ -1,5 +1,5 @@
 
-export default  function Storage(){
-    return 1
+export default  function Play(){
+    return <>'play'</>
 }
 

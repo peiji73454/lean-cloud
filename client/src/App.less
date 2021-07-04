@@ -1,0 +1,71 @@
+//@import '~antd/lib/style/themes/default.less';
+//@import '~antd/dist/antd.less'; // 引入官方提供的 less 样式入口文件
+
+@font-face {
+  font-family: icon;
+  src: url("./assets/icons.woff2")format('woff');
+}
+.iconfont{
+  font-family: icon;
+  font-size: 16px;
+  font-style: normal;
+}
+.iconfont-lang:before{
+  content: "\f1ab";
+}
+.iconfont-angle-right:before{
+  content: "\f105";
+}
+.iconfont-external:before {
+  content: "\f35d";
+  font-size: 12px;
+  margin-left: 20px;
+}
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+html,body{
+  color: #373d41;
+  font-size: 18px!important;
+}
+*, :after, :before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  list-style: none;
+}

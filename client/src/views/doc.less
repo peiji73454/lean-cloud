@@ -1,0 +1,88 @@
+@doc-theme-color:#f7f7f7;
+@doc-font-color:#777;
+@doc-font-size:13px;
+@primary-color: #3090e4;
+@primary-bgcolor: #f1f8ff;
+
+.doc{
+  &.ant-layout{
+    background: unset;
+    .ant-layout-header{
+      background: @doc-theme-color;
+      .head_ul{
+        display: flex;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+        .head_left{
+          width: 60%;
+          display: flex;
+          justify-content: space-between;
+        }
+        a{
+          color: @doc-font-color;
+          font-size: @doc-font-size;
+
+          &.LeanCloud{
+            font-size: 20px;
+            font-width: 700;
+          }
+        }
+        .log{
+          position: absolute;
+          right: 0;
+        }
+      }
+    }
+    .algolia-autocomplete{
+      width: 1200px;
+      text-align: center;
+      margin: 0 auto;
+      .ant-select-show-search{
+        min-width: 50%!important;
+      }
+      .ant-select-selector{
+        height: 46px;
+        line-height: 46px;
+        font-size: 16px;
+      }
+      .ant-select-selection-placeholder{
+        line-height: 46px;
+        text-align: left;
+      }
+      .secTabs{
+        .ant-tabs-nav{
+          background: #FFFFFF;
+          z-index: 999;
+        }
+        .ant-tabs-content{
+          flex-direction: column;
+          .ant-tabs-tabpane{
+            display: block!important;
+            .list-unstyled{
+              .ant-btn-primary{
+                margin-right: 8px;
+                color: @primary-color;
+                background: @primary-bgcolor;
+                border-color: @primary-bgcolor;
+              }
+              .ant-btn-link{
+                color: @primary-color;
+              }
+            }
+          }
+
+        }
+      }
+
+
+
+    }
+    .ant-layout-footer{
+      background: unset;
+    }
+  }
+
+}
+

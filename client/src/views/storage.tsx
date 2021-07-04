@@ -1,5 +1,5 @@
 
 export default  function Storage(props:any){
-    return props
+    return <div>Storage{props}</div>
 }
 

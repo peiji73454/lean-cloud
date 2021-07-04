@@ -1,9 +1,24 @@
-import {createStore,combineReducers} from 'redux'
-import {user,routecss} from './reducers'
+import {createStore,combineReducers,applyMiddleware} from 'redux'
+// import thunk from 'redux-thunk';
+import {program,programDetail,queryList,docResults,subHeadQueryList} from './reducers'
+import {lang} from './lang-reducers'
+import {user} from './user-reducers'
 
 
-const todoApp = combineReducers({
-    routecss,
+const rootReducers = combineReducers({
+    program,
+    programDetail,
+    queryList,
+    docResults,
+    subHeadQueryList,
+    lang,
     user
 })
-export default createStore(todoApp)
+
+// 可以实时监听到state里值的改变
+// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+export default createStore(rootReducers
+    // composeEnhancers(
+    //     applyMiddleware(thunk)
+    // )
+    )
