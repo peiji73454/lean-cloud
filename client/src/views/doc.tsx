@@ -15,7 +15,7 @@ import {StickyContainer, Sticky} from 'react-sticky';
 import DocHead from 'components/DocHead'
 
 import Download from './download'
-import Demo from './demo'
+import Demo from './Demo'
 
 const {Option} = AutoComplete;
 

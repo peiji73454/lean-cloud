@@ -2,7 +2,7 @@ import {Layout} from "antd";
 import DocHead from "components/DocHead";
 import SubHead from "components/SubHead";
 import React from "react";
-import'./demo.less'
+import'./Demo.less'
 import {GithubOutlined,StepForwardOutlined} from '@ant-design/icons'
 import { Button } from 'antd';
 const {Header, Content, Footer, Sider} = Layout;
