@@ -1,0 +1,41 @@
+
+@console-font-color: rgba(0,0,0,.55);
+.console{
+  header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:0 1.556rem;
+    background-color: rgba(0,0,0,.04);
+    font-size:0.778rem;
+    a{
+      color: @console-font-color;
+    }
+    .main{
+      font-size: 1.111rem;
+      font-weight: bold;
+      color: @console-font-color;
+      line-height: 2.611rem;
+
+    }
+    .site-dropdown,.right{
+      flex: 1;
+    }
+    .right{
+      text-align: right;
+     .lang-dropdown,.help-dropdown{
+       display: inline-block;
+       margin: 0 10px;
+     }
+
+    }
+    .anticon-down{
+      margin-left: 5px;
+    }
+  }
+  .console-container{
+    max-width: 33.333rem;
+    margin: 0 auto;
+    padding: 1rem 1.556rem;
+  }
+}

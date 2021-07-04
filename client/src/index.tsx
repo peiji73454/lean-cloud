@@ -1,23 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.less';
-import App from './App.tsx';
+import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {Provider} from 'react-redux'
 import store from './reducers'
-import {AppContainer} from 'react-hot-loader';
-//todo:react-hot-loader
-ReactDOM.render(
-    <Provider store={store}>
+import './utils/api'
 
-        {/*<AppContainer>*/}
+import {AppContainer} from 'react-hot-loader';
+import {BrowserRouter, Route, Switch} from "react-router-dom";
+import Doc from "./views/doc";
+//todo:react-hot-loader
+
+const render = (Component: any) => {
+    ReactDOM.render(
+        <Provider store={store}>
+            {/*<AppContainer>*/}
             <React.StrictMode>
-                <App/>
+                <Component/>
             </React.StrictMode>
-        {/*</AppContainer>*/}
-    </Provider>,
-    document.getElementById('root')
-);
+            {/*</AppContainer>*/}
+        </Provider>,
+        document.getElementById('root')
+    )
+}
+render(App);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
