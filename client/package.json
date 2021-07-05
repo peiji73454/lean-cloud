@@ -94,6 +94,7 @@
     "dev": "concurrently \"npm run serve\" \"npm start\""
   },
   "proxy": "http://localhost:5000",
+  "homepage": "./",
   "eslintConfig": {
     "extends": [
       "react-app",

@@ -20,7 +20,7 @@ import Doc from "./views/doc";
 import {connect} from "react-redux";
 import {log} from "util";
 import Download from "./views/download";
-import Demo from "./views/demo";
+import Demo from "./views/Demo";
 import messages from './i18n/i18n'
 
 
