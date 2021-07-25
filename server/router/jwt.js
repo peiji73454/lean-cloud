@@ -31,18 +31,14 @@ class Jwt {
         let cert = fs.readFileSync(path.join(__dirname, './pem/rsa_private_key.pem'));//私钥 可以自己生成
         let token = jwt.sign({
             data:this.data,
-            exp: created + 60 * 30, // 过期时间 30 分钟
+            exp: created + 60 * 1, // 过期时间 30 分钟
             iat: created, // 创建时间
         }, cert, {algorithm: 'RS256'});
         return token;
     }
 
     // 校验token
-    verifyToken(data) {
-        if (data) {
-            this.data = data;
-        }
-        let token = this.data;
+    verifyToken(token) {
         let cert = fs.readFileSync(path.join(__dirname, './pem/rsa_public_key.pem'));//公钥 可以自己生成
         let res;
         try {

@@ -4,6 +4,6 @@ const enUS = {
     logout: "Sign out",
     email:'email',
     password:'password',
-    submit:'submit'
+    login:'login',
 };
 export default enUS;

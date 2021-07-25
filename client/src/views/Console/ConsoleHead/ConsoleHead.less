@@ -37,5 +37,30 @@
     max-width: 33.333rem;
     margin: 0 auto;
     padding: 1rem 1.556rem;
+    .tip{
+      padding-top: 0.2rem;
+      color: #9ba0a3;
+      font-size: 0.722rem;
+    }
+    .ant-alert{
+      box-shadow: -6px 0 0 0 #5aaeed, 0 0 0 0 transparent;
+      .bulleted{
+        color: #2c97e8;
+        padding-left: 1rem;
+        li:before{
+          user-select: none;
+          pointer-events: none;
+          position: absolute;
+          top: auto;
+          left: auto;
+          font-weight: 400;
+          margin-left: -0.667rem;
+          content: "•";
+          opacity: 1;
+          color: inherit;
+          vertical-align: top;
+        }
+      }
+    }
   }
 }

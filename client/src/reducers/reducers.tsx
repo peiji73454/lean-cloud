@@ -108,7 +108,7 @@ const headerData = {
     ],
     docList: [
         {id: 0, name: '文档首页', url: '/docs', islink: true},
-        {id: 1, name: 'SDK下载', url: '/download', islink: true},
+        {id: 1, name: 'SDK下载', url: '/docs/download', islink: true},
         {id: 2, name: 'Demos', url: '/docs/demo', islink: true},
         {id: 3, name: 'API 文档', url: '/docs/api', islink: false},
         {id: 4, name: 'SDK 数据收集', url: '/docs/dataSearch', islink: false},
@@ -216,6 +216,14 @@ const queryList = (state = headerData, action: any) => {
             return headerData['homeList']
     }
 }
+const docQueryList = (state = headerData, action: any) => {
+    switch (action.type) {
+        case DOCLIST:
+            return headerData['docList']
+        default :
+            return headerData['docList']
+    }
+}
 
 const docResults = (state = [], action: any) => {
     let res: string[] = [];
@@ -230,4 +238,4 @@ const docResults = (state = [], action: any) => {
 const subHeadQueryList = () =>headerData['subHeadQueryList']
 
 
-export {program, programDetail, queryList, docResults,subHeadQueryList}
+export {program, programDetail, queryList, docQueryList, docResults,subHeadQueryList}

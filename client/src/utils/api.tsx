@@ -1,26 +1,11 @@
-import axios, {
-    AxiosAdapter,
-    AxiosBasicCredentials,
-    AxiosProxyConfig,
-    AxiosTransformer, CancelToken,
-    Method,
-    ResponseType
-} from 'axios'
-// const fs=require('fs')
-// axios({
-//     method:'get',
-//     url:'https://leancloud:8443/img/',
-//     responseType:'stream'
-// })
-//     .then(function(response) {
-//         console.log(response)
-//         // const imgurl=response.data.pipe(fs.createWriteStream('night.jpg'))
-//         // console.log(imgurl)
-//     });
+import axios from 'axios'
 import {getToken} from 'utils/cookie'
+import {Encrypt} from './RSAUtils'
 const instance = axios.create({
-    timeout: 1000,
-    headers: {'X-Custom-Header': 'foobar'}
+    timeout: 5000,
+    headers: {'X-Custom-Header': 'foobar'},
+    baseURL: 'http://localhost:3000/'
+
 });
 
 // 添加请求拦截器
@@ -87,7 +72,7 @@ instance.interceptors.response.use(function (response) {
 });
 
 
-// instance.post('/login',{phone:12345678,pwd:88888888}).then(res=>{
+// instance.post('/Console',{phone:12345678,pwd:88888888}).then(res=>{
 //     console.log(res)
 // })
 //
@@ -129,7 +114,7 @@ instance.interceptors.response.use(function (response) {
 // })
 
 
-const ajax=async function(url:string,data?:any,method?:string){
+const request=async function(url:string,data?:any,method?:string){
     if(method?.toUpperCase()==='GET'){
         return  await instance.get(url,{params:data})
     }else{
@@ -138,50 +123,62 @@ const ajax=async function(url:string,data?:any,method?:string){
 }
 
 // 1. 定义基础路径
-const BASE_URL = 'http://localhost:3000/'
 
 /*****Home 模块*******/
-export const getHomeData = () => ajax(BASE_URL + 'homeApi');
+export const getHomeData = () => request('homeApi');
 // 特色专区
-export const getHomeSpecialZone = () => ajax(BASE_URL + 'homeApi/specialZone');
+export const getHomeSpecialZone = () => request('homeApi/specialZone');
 
 /***** 分类(Category) 模块 *******/
 // Category 列表页面数据
-export const getCategoryData = () => ajax(BASE_URL + 'homeApi/categories');
+export const getCategoryData = () => request('homeApi/categories');
 
 // Category 右边内容页面数据 需要根据左边点击传值
-export const getCategoryDetailData = (params: string) => ajax(BASE_URL + 'homeApi/categoriesdetail' + params);
+export const getCategoryDetailData = (params: string) => request('homeApi/categoriesdetail' + params);
 
 /***** 吃什么 模块 *******/
 // 今日菜单的所有菜单分类
-export const getTodayMenuCategoryList = () => ajax(BASE_URL + 'recipe/allScene');
+export const getTodayMenuCategoryList = () => request('recipe/allScene');
 // 菜品菜单
-export const getTodayMenuDetail = (params: string) => ajax(BASE_URL + 'recipe/menulist' + params);
+export const getTodayMenuDetail = (params: string) => request('recipe/menulist' + params);
 
 /***** 购物车页面 猜你喜欢*********/
-export const getGuessYouLike = () => ajax(BASE_URL + 'cart/youlike');
+export const getGuessYouLike = () => request('cart/youlike');
 
 /***** 登录界面接口 *********/
 // 1.获取手机验证码(GET)
 // Easy Mock 模拟发送验证码
-export const getPhoneCaptcha = (phoneNumber: any) => ajax(BASE_URL + 'send_code', {
+export const getPhoneCaptcha = (phoneNumber: any) => request('send_code', {
     phoneNumber
 });
 
 // 2.手机验证码登录(POST)
 // Easy Mock 模拟用户登录
-export const phoneCaptchaLogin = (phone: any, captcha: any) => ajax(BASE_URL + 'login_code', {
+export const phoneCaptchaLogin = (phone: any, captcha: any) => request('login_code', {
     phone,
     captcha
 }, 'POST');
 
+export const register =async ({email:username, password,phone, smsCode,captcha}:{email:string,password:string,phone:number,smsCode:number,captcha:string}) => {
+    return request('/register', {
+        username,
+        email:username,
+        password:Encrypt(password),
+        phone,
+        smsCode,
+        captcha
+    }, 'POST')
+};
+
 // 3.账号密码登录(POST)
-export const pwdLogin = ({email:username, password, captcha}:{email:string,password:string,captcha:string}) => ajax(BASE_URL + 'login', {
-    username,
-    password,
-    captcha
-}, 'POST');
+export const pwdLogin =async ({email:username, password, captcha}:{email:string,password:string,captcha:string}) => {
+   return request('/login', {
+        username,
+        password:Encrypt(password),
+        captcha
+    }, 'POST')
+};
 
 /***** 个人中心 *********/
 // 1.绿卡Vip
-export const getVipContent = () => ajax(BASE_URL + 'vip');
+export const getVipContent = () => request('vip');

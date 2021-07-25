@@ -1,0 +1,92 @@
+.AccountHead {
+  .logo {
+    color: #fff;
+    background-color: #2c97e8;
+    display: block;
+    text-align: center;
+    font-size: 1.111rem;
+    line-height: 2.611rem;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .site-layout {
+    background: #FFFFFF;
+
+    .site-layout-background {
+      background-color: rgba(0, 0, 0, .04);
+      border-bottom: 1px solid rgba(34, 36, 38, .06);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .accountHeadLeft, .accountHeadRight {
+        > div {
+          width: 3.611rem;
+
+          svg {
+            display: inline-block;
+            margin: 0 5px;
+          }
+        }
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+  }
+
+  .ant-menu {
+    .ant-menu-item-selected {
+      color: #5aaeed;
+      background-color: transparent !important;
+      position: relative;
+
+      &:after {
+        content: "";
+        position: absolute;
+        width: 4px;
+        height: 60%;
+        left: 0.667rem;
+        top: 20%;
+        background: #2c97e8;
+      }
+    }
+  }
+
+  .token-container, .email-container, .profile-container {
+    padding: 1.111rem 1.556rem;
+
+    .ant-alert {
+      border-radius: 0;
+      background-color: #f4faff;
+      border-color: #f4faff;
+      color: #2c97e8;
+      box-shadow: -6px 0 0 0 #5aaeed, 0 0 0 0 transparent;
+    }
+
+    .ant-space {
+      width: 100%;
+    }
+    .ant-modal-body {
+      padding: 0;
+      .modal-question {
+        padding: 1.333rem;
+        background: rgba(153, 153, 153, .1);
+      }
+      .modal-main {
+        padding: 0 1.333rem 0.667rem;
+        .ant-tag {
+          text-transform: uppercase;
+          cursor: help;
+          &:hover {
+            color: #ff8c2c;
+          }
+        }
+      }
+    }
+  }
+
+}
+

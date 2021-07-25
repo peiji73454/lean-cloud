@@ -1,9 +1,5 @@
-import {Layout} from "antd";
-import DocHead from "components/DocHead";
 import React from "react";
-import {NavLink} from "react-router-dom";
 import {connect} from "react-redux";
-const {Header, Content, Footer, Sider} = Layout;
  function SubHead(props:any){
     return <>
         <ul className='sub_head_ul'>
@@ -14,7 +10,7 @@ const {Header, Content, Footer, Sider} = Layout;
     </>
 }
 
-function mapStateToProps(state: any, ownProps: any) {
+function mapStateToProps(state: any) {
     const {subHeadQueryList} = state
     return {
         subHeadQueryList

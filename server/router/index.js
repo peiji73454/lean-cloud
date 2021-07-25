@@ -8,7 +8,7 @@ var url = "mongodb://localhost:27018/";
 // TODO MongoError: there are no users authenticated
 // code == 2000: success
 // code == 5001: invalid access token
-// code == 5002: already login in other place
+// code == 5002: already Console in other place
 // code == 5003: access token expired
 // code == 5004: invalid user (user not exist)
 // code == 5005: username or password is incorrect
@@ -29,34 +29,64 @@ exports.router = function (app) {
         //         database.close();
         //     });
         // })
-        app.post('/login',function(req,res){
-            res.cookie("name",'zhangsan',{maxAge: 900000, httpOnly: true});
-            // { username: '18221733710@139.com', password: '1' }
-            var user = new User(req.body)
-            database.collection("USER").insertOne(req.body, function (err, _res) {
-                if (err) throw err;
-                let  userInfo=new User(_res.ops.find(item=>item.username===req.body.username))
-                if(!userInfo){
-                    return res.status(400).json({
-                        code: 5004,
-                        messaege: 'Invalid User'
-                    })
-                }
-                delete userInfo.password
-                userInfo=({...userInfo,accessToken:new Jwt(userInfo._id).generateToken()})
+        app.post('/register',async function(req,res){
+           const storedUser= await database.collection("USER").find({}).toArray()// 返回集合中所有数据
+            const userInfo=storedUser.find(item=>item.username===req.body.username)
+            if(userInfo){
+              return  res.status(401).json({
+                            code: 5004,
+                            messaege: '已注册，请去登录'
+                        })
+            }else{
+                database.collection("USER").insertOne(req.body)
+                let  {userId}=new User(req.body)
+                const jwt=new Jwt(userId)
+                const accessToken=jwt.generateToken()
+                res.cookie("accessToken",accessToken,{maxAge: 900000, httpOnly: true});
                 return res.json({
                     code: 2000,
-                    userInfo
+                    message:'注册成功'
                 })
-            });
+            }
+        })
+
+        app.post('/login',async function(req,res){
+
+            const user=new User(req.body)
+            const storedUser= await database.collection("USER").find({}).toArray()// 返回集合中所有数据
+            const userInfo=storedUser.find(item=>item.username===user.username&&item.password===user.password)
+                if(userInfo){
+                    const jwt=new Jwt(user.userId)
+                    const accessToken=jwt.generateToken()
+                    res.cookie("accessToken",accessToken,{maxAge: 900000, httpOnly: true});
+                    return res.json({
+                        code: 200,
+                        message:'登录成功',
+                        data:user
+                    })
+                }else{
+                    return res.status(200).json({
+                        code: 401,
+                        message:'用户不存在，请先注册'
+                    })
+                }
 
         })
-        app.get('/foo', function (req, res) {
-            dbo.collection("col").find({}).toArray(function (err, result) { // 返回集合中所有数据
-                if (err) throw err;
-                res.send(result);
-                // db.close();
-            });
+
+        app.get('/userInfo', async function (req, res) {
+            const userId= new Jwt().verifyToken(req.cookies.accessToken)
+            if(!userId){
+                return res.status(401).json({
+                    code:5001,
+                    message:'invalid access token',
+                })
+            }
+            const storedUser= await database.collection("USER").find({}).toArray()// 返回集合中所有数据
+            const userInfo=storedUser.find(item=>item.username===req.body.username)
+                return res.json({
+                    code: 2000,
+                    data:userInfo
+                })
         })
     });
 

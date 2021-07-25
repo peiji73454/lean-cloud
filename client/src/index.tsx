@@ -9,16 +9,13 @@ import './utils/api'
 
 import {AppContainer} from 'react-hot-loader';
 import {BrowserRouter, Route, Switch} from "react-router-dom";
-import Doc from "./views/doc";
 //todo:react-hot-loader
 
 const render = (Component: any) => {
     ReactDOM.render(
         <Provider store={store}>
             {/*<AppContainer>*/}
-            <React.StrictMode>
                 <Component/>
-            </React.StrictMode>
             {/*</AppContainer>*/}
         </Provider>,
         document.getElementById('root')
