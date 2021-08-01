@@ -1,0 +1,21 @@
+.error{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.error .error-logo{
+     font-size: clamp(300px,MAX(50vh,50vw),500px);
+     opacity: .04;
+     position: absolute;
+     left: calc(50% - MAX(50vh,50vw)/2);
+     top: calc(50% - MAX(50vh,50vw)/2 - 50px);
+  }
+.error .error-text{
+    min-height: 0.778rem;
+    font-size: 1.556rem;
+    font-weight: 700;
+    line-height: 2rem;
+    margin: 1.333rem 0;
+}

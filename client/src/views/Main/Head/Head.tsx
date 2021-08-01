@@ -17,6 +17,7 @@ import Users from "../User/Users";
 import Tutorials from "../Tutorials/Tutorials";
 import Support from "../Support/Support";
 import Play from "../../play";
+import Error from "../../Error/Error";
 const {Header, Footer, Content} = Layout;
 
 function toRouter(url: string, e: any) {

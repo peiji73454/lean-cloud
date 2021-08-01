@@ -1,5 +1,5 @@
-export default function Finance(props:any){
+export default function Billing(props:any){
     return <>
-        Finance
+        暂无账单记录
     </>
 }

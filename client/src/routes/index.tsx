@@ -1,17 +1,10 @@
-import React,{Component} from "react";
-import {Switch,Route,BrowserRouter,HashRouter,Redirect} from 'react-router-dom';
-import Storage from 'views/storage'
-import Pricing from 'views/Price/pricing'
-import Users from 'views/Main/User/Users'
-import Play from 'views/play'
+import React, {Component} from "react";
+import {Switch, Route, BrowserRouter, HashRouter, Redirect} from 'react-router-dom';
 import Head from "views/Main/Head/Head";
 import ConsoleHead from "views/Console/ConsoleHead/ConsoleHead";
 import DocHead from "views/Docments/DocHead/DocHead";
-import Download from "views/Docments/download";
-import Demo from "views/Docments/Demo";
 import Account from "views/Console/Account/Account";
-import Verify from "views/Console/Account/Verify/Verify";
-import {getToken,setToken,removeToken} from "utils/cookie";
+import Forum from "views/Forum";
 
 // const requireAuth = (nextState, replace) => {
 //     if (!getToken('accessToken')) {
@@ -19,11 +12,10 @@ import {getToken,setToken,removeToken} from "utils/cookie";
 //         replace({ pathname: '/' })
 //     }
 // }
-
-export default class RouteConfig extends Component{
-    render(){
-        console.log(this.props,'RouteConfig')
-        const { isLogin}:any = this.props;
+export default class RouteConfig extends Component {
+    render() {
+        console.log(this.props, 'RouteConfig')
+        const {isLogin}: any = this.props;
         return (
             <BrowserRouter basename={'/lean-cloud'}>
                 <Switch>
@@ -37,6 +29,7 @@ export default class RouteConfig extends Component{
                     <Route path="/docs/" component={DocHead}/>
                     <Route path="/console/Account/" component={Account}/>
                     <Route  path="/console" component={ConsoleHead}/>
+                    <Route  path="/forum" component={Forum}/>
                     <Route  path="/" component={Head}/>
                 </Switch>
             </BrowserRouter>
