@@ -1,171 +1,88 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        body{
-            background: #000;
-        }
-        .imgList li {
-            float: left;
-            display: inline;
-            width: 305px;
-            height: 280px;
-            overflow: hidden;
-            margin-right: 42px;
-            position: relative;
-            box-shadow: 0 0 8px rgba(7, 0, 2, 0.27);
-            margin-bottom: 35px;
-        }
+        ul{
+            width: 400px;
+            margin: 0 auto 0;
+            padding: 0;
 
-        .imgList li img {
-            height: 100%;
+            list-style: none;
+        }
+        li{
+            line-height: 50px;
+            border-bottom: 1px solid red;
+        }
+        .del,.update{
+            float: right;
+            height: 30px;
+            line-height: 30px;
+            margin-top: 10px;
+            margin-left: 10px;
+            color: #fff;
+            text-align: center;
+            padding:0 5px;
+        }
+        .del{
+            background: red;
+        }
+        .update{
+            background: green;
+        }
+        button{
             display: block;
-            vertical-align: top;
-        }
-
-        .imgList li:hover .light {
-            left: 250px;
-        }
-
-        .light {
-            cursor: pointer;
-            position: absolute;
-            left: -510px;
-            top: 0;
-            width: 305px;
-            height: 436px;
-            background-image: -moz-linear-gradient(0deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
-            background-image: -webkit-linear-gradient(0deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
-            transform: skewx(-25deg);
-            -o-transform: skewx(-25deg);
-            -moz-transform: skewx(-25deg);
-            -webkit-transform: skewx(-25deg);
-            transition: all 0.5s;
-        }
-    </style>
-
-
-    <style>
-
-        .box{
-            width: 200px;
-            margin: 200px auto;
-            height: 50px;
-            background: #eff8ff;
-            cursor: pointer;
-            border-radius: 10px;
-            position: relative;
-            /*overflow: hidden;*/
-        }
-
-        .box:before
-        {
-            content: '';
-            width: 10px;
-            height: 100px;
-            background: #fff;
-            /*background: linear-gradient(transparent 10%,rgba(255,255,255,0.4),transparent 90%);*/
-            /*transform: skewX(-24deg);*/
-            position: absolute;
-            mix-blend-mode: overlay;
-            top: -40px;
-            left: -40px;
-            animation: btn-highlight-before 1.6s cubic-bezier(0.4,.41,.04,1) 0s 1;
-            /*transition: .5s ;*/
-        }
-
-        .box:hover:before
-        {
-            left:500px;
-        }
-
-
-
-
-        .box1{
-            margin: 200px auto;
-            color: #3090e4;
-            background: #eff8ff;
-            border-color: #3090e4;
-            position: relative;
-            display: inline-block;
-            border-radius: 4px;
-            font-size: 20px;
-            font-family: radikal,"Helvetica Neue",Helvetica,"PingFang SC","Microsoft Yahei","WenQuanYi Micro Hei",Arial,Verdana,sans-serif;
-            font-weight: 400;
-            padding: 4px 14px;
-            vertical-align: middle;
-            overflow: hidden;
-            cursor: default;
-        }
-        .box1:before,.box1:after{
-            content: '';
-            position: absolute;
-            width: 10px;
-            height: 60px;
-            background: #fff;
-            display: block;
-            top: 0;
-            left: -40px;
-            transform: skewX(-24deg);
-            mix-blend-mode: overlay;
-        }
-        .box1:before{
-            width: 5px;
-            margin-left: -15px;
-            animation: btn-highlight-before 1.6s cubic-bezier(0.4,.41,.04,1) 0s 1;
-        }
-        .box1:after{
-            animation: btn-highlight-after 1.55s cubic-bezier(0.4,.41,.04,1) 0s 1;
-        }
-
-        @keyframes btn-highlight-before {
-            100% {
-                left: calc(130%);
-                width: 40px;
-                margin-left: -25px;
-                transition-delay: .05s;
-                transition-duration: 1.55s
-            }
-        }
-
-        @keyframes btn-highlight-after {
-            100% {
-                left: calc(130%);
-                width: 120px
-            }
+            margin: 20px auto 0;
         }
     </style>
 </head>
-
 <body>
-<div class="box"></div>
-<div class="box1">社区技术支持</div>
-<div>
-    <ul class="imgList">
-        <li>
-            <img src="img_pro1.png" alt="">
-            <i class="light"></i>
-        </li>
-        <li>
-            <img src="img_pro1.png" alt="">
-            <i class="light"></i>
-        </li>
-        <li>
-            <img src="img_pro1.png" alt="">
-            <i class="light"></i>
-        </li>
-        <li>
-            <img src="img_pro1.png" alt="">
-            <i class="light"></i>
-        </li>
-    </ul>
-</div>
-</body>
+<ul>
+    <li>列表1 <span class="del">删除</span> <span class="update">修改</span></li>
+    <li>列表2 <span class="del">删除</span> <span class="update">修改</span></li>
+    <li>列表3 <span class="del">删除</span> <span class="update">修改</span></li>
+    <li>列表4 <span class="del">删除</span> <span class="update">修改</span></li>
+    <li>列表5 <span class="del">删除</span> <span class="update">修改</span></li>
+</ul>
+<button>添加</button>
+<script>
+    //需求：每一个li中的删除和修改按钮都可以对这个li进行操作，
+    //点击添加按钮可以添加一个li
+    //新添加的li也可以有删除和修改的效果
+    var ul = document.querySelector('ul');
+    var btn = document.querySelector('button');
+    //点击添加按钮，添加一个li
+    btn.onclick = function(){
+        //1.弹窗
+        var val = prompt('请输入内容');//获取到用户输入的内容，作为一会添加的li的内容
+        //2.获取输入的内容 并添加li
+        var li = document.createElement('li');
+        li.innerHTML = val + ' <span class="del">删除</span> <span class="update">修改</span>';
+        //3.追加li到ul中
+        ul.appendChild(li);
 
+    }
+
+    ul.onclick = function(e){
+        var ev = window.event || e;
+        console.log(ev.target);//实际触发事件的元素
+        //判断：如果点击的元素内容为修改 就执行修改效果  如果点击的元素内容为删除，就执行删除效果
+        //点击删除按钮  删除当前的li
+        if(ev.target.innerHTML=='删除'){
+            //删除当前点击的按钮的父元素即可
+            ev.target.parentNode.remove();
+        }
+
+        //点击修改按钮修改当前li
+        else if(ev.target.innerHTML=='修改'){
+            var val1 = prompt('请输入修改内容');
+            ev.target.parentNode.innerHTML = val1 + ' <span class="del">删除</span> <span class="update">修改</span>'
+        }
+    }
+
+</script>
+</body>
 </html>

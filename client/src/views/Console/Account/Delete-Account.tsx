@@ -50,10 +50,11 @@ export default function Alert({location,history}:any){
            <Button type="primary" danger onClick={showModal}>注销账号</Button>
            <Modal title={title} visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}
                   footer={[
-                      <Button type="link" onClick={handleCancel}>
+                      <Button key={'cancel'} type="link" onClick={handleCancel}>
                           取消
                       </Button>,
                       <Button
+                          key="delete"
                           onClick={deleteAccount}
                       >
                           注销

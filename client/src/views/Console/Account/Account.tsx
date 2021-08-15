@@ -1,6 +1,19 @@
 import {Layout, Menu, Avatar, Dropdown} from 'antd';
 import {
     DownOutlined,
+    UserOutlined,
+    MailOutlined,
+    FilePptOutlined,
+    AccountBookOutlined,
+    AppstoreOutlined,
+    AuditOutlined,
+    EllipsisOutlined,
+    TeamOutlined,
+    UserDeleteOutlined,
+    MenuOutlined,
+    SubnodeOutlined,
+    PropertySafetyOutlined,
+    FileOutlined
 } from '@ant-design/icons';
 import {connect} from "react-redux";
 import {BrowserRouter, Route, Redirect, Switch} from "react-router-dom";
@@ -20,12 +33,8 @@ import Invoice from "./Invoice";
 import React, {useCallback, useState} from "react";
 import './Account.less'
 import Error from "../../Error/Error";
-import DocHead from "../../Docments/DocHead/DocHead";
-import ConsoleHead from "../ConsoleHead/ConsoleHead";
-import Head from "../../Main/Head/Head";
 const RedirectAs404 = ({location}:any) => <Redirect to={Object.assign({}, location, { state: { is404: true } })} />
 const {Header, Content, Footer, Sider} = Layout;
-const {SubMenu} = Menu;
 const menuLang = (
     <Menu>
         <Menu.Item key="0">
@@ -97,46 +106,46 @@ function Account(props: any) {
                     </div>
                     <Menu theme="dark" defaultSelectedKeys={['/console/account/profile']} mode="inline"  onClick={handleClick}>
                         <Menu.ItemGroup title="账号设置">
-                            <Menu.Item key="/console/account/profile">
+                            <Menu.Item key="/console/account/profile" icon={<UserOutlined />}>
                                 开发者信息
                             </Menu.Item>
-                            <Menu.Item key="/console/account/email">
+                            <Menu.Item key="/console/account/email" icon={<MailOutlined />}>
                                 Email
                             </Menu.Item>
-                            <Menu.Item key="/console/account/tokens">
+                            <Menu.Item key="/console/account/tokens" icon={<FilePptOutlined />}>
                                 Access Token
                             </Menu.Item>
-                            <Menu.Item key="/console/account/security">
+                            <Menu.Item key="/console/account/security" icon={<AccountBookOutlined />}>
                                 账号安全
                             </Menu.Item>
-                            <Menu.Item key="/console/account/verify">
+                            <Menu.Item key="/console/account/verify" icon={<AppstoreOutlined />}>
                                 实名认证
                             </Menu.Item>
-                            <Menu.Item key="/console/account/beian">
+                            <Menu.Item key="/console/account/beian" icon={<AuditOutlined />}>
                                 备案
                             </Menu.Item>
-                            <Menu.Item key="/console/account/ips">
+                            <Menu.Item key="/console/account/ips" icon={<EllipsisOutlined />}>
                                 独立IP
                             </Menu.Item>
-                            <Menu.Item key="/console/account/teams">
+                            <Menu.Item key="/console/account/teams" icon={<TeamOutlined />}>
                                 团队管理
                             </Menu.Item>
-                            <Menu.Item key="/console/account/delete-account">
+                            <Menu.Item key="/console/account/delete-account" icon={<UserDeleteOutlined />}>
                                 注销账号
                             </Menu.Item>
                         </Menu.ItemGroup>
 
                         <Menu.ItemGroup title="财务">
-                            <Menu.Item key="/console/account/finance">
+                            <Menu.Item key="/console/account/finance" icon={<MenuOutlined />}>
                                 概览
                             </Menu.Item>
-                            <Menu.Item key="/console/account/alert">
+                            <Menu.Item key="/console/account/alert" icon={<SubnodeOutlined />}>
                                 告警
                             </Menu.Item>
-                            <Menu.Item key="/console/account/billing">
+                            <Menu.Item key="/console/account/billing" icon={<PropertySafetyOutlined />}>
                                 账号
                             </Menu.Item>
-                            <Menu.Item key="/console/account/invoice">
+                            <Menu.Item key="/console/account/invoice" icon={<FileOutlined />}>
                                 发票
                             </Menu.Item>
                         </Menu.ItemGroup>
